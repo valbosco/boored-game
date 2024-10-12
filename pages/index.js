@@ -11,10 +11,11 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   const fetchActivities = async (url) => {
+    const apiUrl = url || 'https://bored-api.appbrewery.com/';
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(url);
+      const response = await fetch(apiUrl);
       if (!response.ok) throw new Error('Failed to fetch activities');
       const data = await response.json();
       setActivities(Array.isArray(data) ? data : [data]);
